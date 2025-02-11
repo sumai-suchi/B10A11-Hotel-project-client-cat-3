@@ -1,10 +1,12 @@
-import Navbar from "../Components/Navbar";
+import HomeSlider from "../Components/HomeSlider";
+
 
 
 const HomePage = () => {
     return (
         <div>
-             <Navbar></Navbar>
+             
+             <HomeSlider></HomeSlider>
         </div>
     );
 };
