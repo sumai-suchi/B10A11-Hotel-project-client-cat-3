@@ -18,6 +18,7 @@ import image5 from '../../src/assets/water-3292794_640.jpg'
 
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 
 const HomeSlider = () => {
     return (
@@ -28,6 +29,7 @@ const HomeSlider = () => {
        <h3 className='text-lg md:text-2xl font-semibold '>Welcome to </h3>
         <h1 className='text-2xl md:text-6xl lg:text-7xl font-bold'>Monalisa Hotel</h1>
         <h3 className='text-sm md:text-xl font-semibold'>A place to experience and enjoy the life</h3>
+        <Link to={'/Rooms'} className='btn bg-white text-black'>Rooms</Link>
        </div>
         <Swiper
           spaceBetween={30}
