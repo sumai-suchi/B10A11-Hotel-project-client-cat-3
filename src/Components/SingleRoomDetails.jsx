@@ -15,6 +15,18 @@ import axios from "axios";
 import Modal from "./Modal";
 import { toast, ToastContainer } from "react-toastify";
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/pagination';
+
+// import './styles.css';
+
+// import required modules
+import { FreeMode, Pagination } from 'swiper/modules';
+
 
 const SingleRoomDetails = () => {
   const {user}=useContext(AuthContext)
@@ -22,21 +34,25 @@ const SingleRoomDetails = () => {
   console.log(id)
 
   const [room, setRoom] = useState({})
+  const [roomReview, setRoomReview] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-
+ console.log(roomReview)
   // console.log(room)
   const [startDate, setStartDate] = useState(new Date());
   const day = startDate.getDate()
   console.log(day)
   console.log(startDate)
 
-
+  const ThisRoom=roomReview?.filter(rooms=>rooms.RoomName === room.name)
+  console.log(ThisRoom)
 
   useEffect(() => {
   
 
     fetchData()
+
+
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id])
@@ -45,6 +61,20 @@ const SingleRoomDetails = () => {
     const { data } = await axios.get(`http://localhost:5000/Room/${id}`)
     console.log(data)
     setRoom(data)
+  }
+  
+  useEffect(() => {
+  
+
+    fetchReview()
+
+ 
+  }, [id])
+
+  const fetchReview = async () => {
+    const { data } = await axios.get(`http://localhost:5000/RoomReview`)
+    console.log(data)
+    setRoomReview(data)
   }
 
   const handleBooking = async (id) => {
@@ -60,6 +90,21 @@ const SingleRoomDetails = () => {
         });
       console.log(res)
      
+   
+   
+      const response = await axios.post(`http://localhost:5000/MyBookedRoom`,
+        {
+          image:room?.image,
+          RoomName:room?.name,
+          price:room?.price,
+          availability:room?.availability,
+          id:room?._id,
+          
+          date:new Date(startDate),
+          buyer_email:user?.email
+        });
+      console.log(response)
+     
       toast.success('🦄  Booking confirm successfully!', {
         position: "top-right",
         autoClose: 5000,
@@ -73,6 +118,7 @@ const SingleRoomDetails = () => {
       });
       setIsModalOpen(false);
       fetchData()
+      
       
     }
     catch (
@@ -92,6 +138,9 @@ const SingleRoomDetails = () => {
 
       });
     }
+   
+
+
 
   }
 
@@ -164,7 +213,35 @@ const SingleRoomDetails = () => {
 
       </Modal>
 
-
+      <div className=" ">
+                         <h1 className="text-center text-3xl italic mb-4 ">Review Section</h1>
+                    <>
+                    <Swiper
+                      slidesPerView={3}
+                      spaceBetween={30}
+                      freeMode={true}
+                      pagination={{
+                        clickable: true,
+                      }}
+                      modules={[FreeMode, Pagination]}
+                      className="mySwiper"
+                    >
+                      
+                      {
+                        ThisRoom.map((t,i)=> <SwiperSlide key={i} className="flex-col space-y-1.5  " >
+                          <h1 className="font-bold text-2xl italic text-center">{t.name}</h1>
+                          <p className=" italic text-center text-gray-500">
+                            {t.comment}
+                          </p>
+                        </SwiperSlide>
+                      )
+                      }
+                     
+                     
+                    </Swiper>
+                  </>
+              
+      </div>
 
     </div >
   );

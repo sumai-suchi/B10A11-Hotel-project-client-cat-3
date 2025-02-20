@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthContext";
 import axios from "axios";
 import MyBookingCard from "./MyBookingCard";
+import { Helmet } from "react-helmet";
 
 
 const MyBooking = () => {
@@ -26,8 +27,13 @@ const MyBooking = () => {
     return (
    
        <div>
+         <Helmet>
+                <meta charSet="utf-8" />
+                <title>MyBooking - Rooms you have book </title>
+                <link rel="canonical" href="http://mysite.com/example" />
+            </Helmet>
            {
-            myData?.map((room,i)=><MyBookingCard key={i} room={room}></MyBookingCard>)
+            myData?.map((room,i)=><MyBookingCard key={i} room={room} setMydata={setMydata} ></MyBookingCard>)
            }
        </div>
     );
