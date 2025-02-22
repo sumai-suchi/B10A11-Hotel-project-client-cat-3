@@ -26,7 +26,7 @@ const ReviewSection = () => {
      const fetchReview=async()=>
         {
             try {
-                const res= await axios.get(`http://localhost:5000/RoomReview`) 
+                const res= await axios.get(`https://b10-a11-hotel-project-server-cat-3-37qtlt5uy.vercel.app/RoomReview`) 
                 console.log(res.data)
                 setReview(res.data)
             } catch (error) {

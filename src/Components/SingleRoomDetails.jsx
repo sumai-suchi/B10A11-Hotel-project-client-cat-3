@@ -59,7 +59,7 @@ const SingleRoomDetails = () => {
   }, [id])
 
   const fetchData = async () => {
-    const { data } = await axios.get(`http://localhost:5000/Room/${id}`)
+    const { data } = await axios.get(`https://b10-a11-hotel-project-server-cat-3-37qtlt5uy.vercel.app/Room/${id}`)
     console.log(data)
     setRoom(data)
   }
@@ -73,7 +73,7 @@ const SingleRoomDetails = () => {
   }, [id])
 
   const fetchReview = async () => {
-    const { data } = await axios.get(`http://localhost:5000/RoomReview`)
+    const { data } = await axios.get(`https://b10-a11-hotel-project-server-cat-3-37qtlt5uy.vercel.app/RoomReview`)
     console.log(data)
     setRoomReview(data)
   }
@@ -83,7 +83,7 @@ const SingleRoomDetails = () => {
 
     try {
       console.log(room?._id)
-      const res = await axios.put(`http://localhost:5000/Room-update/${id}`,
+      const res = await axios.put(`https://b10-a11-hotel-project-server-cat-3-37qtlt5uy.vercel.app/Room-update/${id}`,
         {
           availability: false,
           date:startDate,
@@ -93,7 +93,7 @@ const SingleRoomDetails = () => {
      
    
    
-      const response = await axios.post(`http://localhost:5000/MyBookedRoom`,
+      const response = await axios.post(`https://b10-a11-hotel-project-server-cat-3-37qtlt5uy.vercel.app/MyBookedRoom`,
         {
           image:room?.image,
           RoomName:room?.name,
