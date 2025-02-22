@@ -1,6 +1,6 @@
 
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 // import ReactDOM from 'react-dom';
 // import Modal from 'react-modal';
 
@@ -32,6 +32,7 @@ const SingleRoomDetails = () => {
   const {user}=useContext(AuthContext)
   const { id } = useParams()
   console.log(id)
+  const navigate=useNavigate()
 
   const [room, setRoom] = useState({})
   const [roomReview, setRoomReview] = useState([])
@@ -181,7 +182,9 @@ const SingleRoomDetails = () => {
         <div></div>
 
         <button className={`bg-black text-white text-3xl font-bold   rounded-none md:py-3 md:px-4 justify-end animate__animated  animate__bounce
-            animate__repeat-2 `}  disabled={!room?.availability}   onClick={() => setIsModalOpen(true)} >{room?.availability? 'Book Now!':'Already Booked'}</button>
+            animate__repeat-2 `}  disabled={!room?.availability}   onClick={() => {
+              user && user?.email ? setIsModalOpen(true) : navigate('/Login')
+            }} >{room?.availability? 'Book Now!':'Already Booked'}</button>
       </div>
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>Book Now!
 

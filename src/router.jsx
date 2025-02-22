@@ -10,6 +10,7 @@ import Rooms from "./Components/Rooms";
 import MyBooking from "./Components/MyBooking";
 import SingleRoomDetails from "./Components/SingleRoomDetails";
 import ErrorPage from "./Components/ErrorPage";
+import PrivateRout from "./Components/PrivateRout";
 
  export const router = createBrowserRouter([
    {
@@ -25,11 +26,11 @@ import ErrorPage from "./Components/ErrorPage";
       {
         path:'/Rooms',
         element:<Rooms></Rooms>,
-        loader:()=>fetch(`http://localhost:5000/Room`)
+     
       },
       {
         path:'/MyBooking',
-        element:<MyBooking></MyBooking>
+        element:<PrivateRout><MyBooking></MyBooking></PrivateRout>
 
       },
       {

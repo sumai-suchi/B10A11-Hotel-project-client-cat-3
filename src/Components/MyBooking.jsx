@@ -19,7 +19,7 @@ const MyBooking = () => {
 
 
     const    fetchMyData = async () => {
-      const { data } = await axios.get(`http://localhost:5000/MyBookedRoom?email=${user?.email}`)
+      const { data } = await axios.get(`http://localhost:5000/MyBookedRoom?email=${user?.email}`,{ withCredentials: true })
       console.log(data)
       setMydata(data)
     }

@@ -1,15 +1,46 @@
-import { useContext } from "react";
+import { useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
 
 
 
+
 const Login = () => {
 
-  const {  LoginUser}=useContext(AuthContext)
+  const {  LoginUser,SingInWithGoogle}=useContext(AuthContext)
   
   const navigate=useNavigate()
+
+
+
+  
+
+  const handleGoogleLogin=async()=>
+    {
+        SingInWithGoogle()
+        .then(result=>
+        {
+            console.log(result.user)
+            //generate webToken
+             
+               
+           
+
+            navigate('/')
+        }
+        )
+        .catch(error=>
+        {
+          console.log(error)
+        }
+        )
+
+
+
+        
+    }
+
   
 const handleSubmit=(e)=>
   { 
@@ -28,7 +59,8 @@ const handleSubmit=(e)=>
     .then((res)=>
     {
       console.log(res.user)
-      toast('user Logged In successfully')
+    
+      toast.success('user Logged In successfully')
       navigate('/')
     })
     .catch((error)=>
@@ -68,10 +100,15 @@ const handleSubmit=(e)=>
               required
             />
             <button type="submit" className="btn btn-primary w-full text-sm sm:text-base">Login</button>
+            
           </form>
+          <div className="flex justify-between">
+          <button type="submit" className="btn mt-2 w-2/6 mx-auto bg-sky-400 text-xs text-white "
+          onClick={handleGoogleLogin}>Google Login</button>
           <p className="text-sm text-center mt-4">
             Already have an account? <Link to="/login" className="text-blue-500">Register here</Link>
           </p>
+          </div>
         </div>
       </div>
     );

@@ -1,20 +1,30 @@
 /* eslint-disable react/prop-types */
 import {  useEffect, useState } from "react";
 import { auth } from "../firebaseConfig";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { AuthContext } from "./AuthContext";
+import axios from "axios";
 
 
 
 
 const AuthProvider = ({children}) => {
-
+   
+    
+  const provider = new GoogleAuthProvider();
     const [user,setUsers]=useState(null)
+    const [Loader,setLoader]=useState(true)
 
     const createUser=(email,password)=>
     {
         return createUserWithEmailAndPassword(auth,email,password)
     }
+
+    const SingInWithGoogle=()=>
+        {
+            return signInWithPopup(auth,provider)
+        }
+    
      
     const updateData=(upDate)=>
     {
@@ -32,9 +42,28 @@ const AuthProvider = ({children}) => {
     }
 
     useEffect(()=>{
-        const UnSubscribe= onAuthStateChanged(auth,(currentUser)=>
+        const UnSubscribe= onAuthStateChanged(auth,async(currentUser)=>
         {
+           
             setUsers(currentUser)
+           
+            if(currentUser?.email)
+            {
+           const {data}= await axios.post(`http://localhost:5000/jwt`,{
+            email:currentUser?.email
+         },{withCredentials:true})
+         console.log(data)
+      
+            }
+            else
+            {
+             
+                setUsers(currentUser)
+                const {data}= await axios.get(`http://localhost:5000/logOut`,{withCredentials:true})
+                console.log(currentUser)
+                console.log(data)
+            }
+            setLoader(false)
         
         })
         return ()=>
@@ -57,7 +86,10 @@ const AuthProvider = ({children}) => {
         setUsers,
         updateData,
         LoginUser,
-        LogOut
+        LogOut,
+        Loader,
+        setLoader,
+        SingInWithGoogle
     }
     return (
         <AuthContext.Provider value={Info}>

@@ -1,6 +1,8 @@
 import { Helmet } from "react-helmet";
 import HomeSlider from "../Components/HomeSlider";
 import SpecialSite from "../Components/SpecialSite";
+import ReviewSection from "../Components/ReviewSection";
+import Footer from "../Components/Footer";
 
 
 
@@ -16,6 +18,9 @@ const HomePage = () => {
              <HomeSlider></HomeSlider>
 
              <SpecialSite></SpecialSite>
+
+             <ReviewSection></ReviewSection>
+             <Footer></Footer>
         </div>
     );
 };

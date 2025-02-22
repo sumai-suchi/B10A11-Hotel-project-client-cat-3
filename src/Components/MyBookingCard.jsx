@@ -38,7 +38,7 @@ const MyBookingCard = ({ room,setMydata}) => {
             RoomName,
             name: user?.displayName,
             email: user?.email,
-            date,
+           
             rating,
             comment
         }

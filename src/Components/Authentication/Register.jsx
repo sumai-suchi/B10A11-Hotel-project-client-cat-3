@@ -40,7 +40,7 @@ const Register = () => {
         .then(
           ()=>{
 
-            toast('User Registered successfully')
+            toast.success('User Registered successfully')
             navigate('/')
           }
         )
@@ -51,7 +51,7 @@ const Register = () => {
             const errorMessage = error.message;
             console.log(errorMessage,errorCode)
 
-            toast(`${errorMessage}`)
+            toast.error(`${errorMessage}`)
           }
         )
 
