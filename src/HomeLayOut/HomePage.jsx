@@ -3,6 +3,8 @@ import HomeSlider from "../Components/HomeSlider";
 import SpecialSite from "../Components/SpecialSite";
 import ReviewSection from "../Components/ReviewSection";
 import Footer from "../Components/Footer";
+import HomeSection1 from "../Components/HomeSection1";
+
 
 
 
@@ -20,6 +22,9 @@ const HomePage = () => {
              <SpecialSite></SpecialSite>
 
              <ReviewSection></ReviewSection>
+             <HomeSection1></HomeSection1>
+
+             
              <Footer></Footer>
         </div>
     );
