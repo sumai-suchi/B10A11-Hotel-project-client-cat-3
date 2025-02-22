@@ -7,6 +7,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 import {   Pagination} from 'swiper/modules'
+import gif from '../../src/assets/Animation - 1740229402827.gif'
 
 // import required modules
 
@@ -35,7 +36,10 @@ const ReviewSection = () => {
         }   
     return (
         <div className='mt-8 lg:mt-32 w-10/12 mx-auto '>
-           <h1 className='text-3xl md:text-6xl md:mb-6   text-gray-600 font-bold text-center italic'>Guest Review</h1>
+          <div className='flex justify-center items-center'>
+            <img src={gif} alt="" />
+          <h1 className='text-3xl md:text-6xl md:mb-6   text-gray-600 font-bold text-center italic'>Guest Review</h1>
+          </div>
              <Swiper
         slidesPerView={1}
         spaceBetween={10}

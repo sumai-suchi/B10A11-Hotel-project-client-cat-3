@@ -4,6 +4,7 @@ import image3 from '../../src/assets/hotel-7885138_640.jpg'
 import image5 from '../../src/assets/water-3292794_640.jpg'
 import { motion } from "framer-motion";
 
+
 const SpecialSite = () => {
 
     const variant={
@@ -12,7 +13,7 @@ const SpecialSite = () => {
     }
     return (
         <div className='space-y-8 w-10/12 mx-auto mt-8 lg:mt-16 space-x-4'>
-                     
+                        
                      <h1 className='font-bold text-3xl md:text-6xl italic text-center space-y-4 text-gray-500'> About Hotel Monalisa</h1>
             <div className='lg:flex space-x-4'
             >

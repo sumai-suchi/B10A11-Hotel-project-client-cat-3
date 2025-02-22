@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
 
-
+import '../FileCSS/styles.css'
 
 
 
@@ -66,8 +66,8 @@ const Register = () => {
     
     }
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4 sm:p-6 md:p-8">
-      <div className="card w-full max-w-sm bg-white shadow-xl p-6 sm:p-8 rounded-lg">
+        <div className="flex justify-center items-center bg-image2 min-h-screen  p-4 sm:p-6 md:p-8">
+      <div className="card w-full max-w-sm bg-gray-200 shadow-xl p-6 sm:p-8 rounded-lg">
         <h2 className="text-2xl font-bold text-center mb-4">Register</h2>
         <ToastContainer></ToastContainer>
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -105,7 +105,7 @@ const Register = () => {
           <button type="submit" className="btn btn-primary w-full text-sm sm:text-base">Register</button>
         </form>
         <p className="text-sm text-center mt-4">
-          Already have an account? <Link to="/Register" className="text-blue-500">Login here</Link>
+          Already have an account? <Link to="/Login" className="text-blue-500">Login here</Link>
         </p>
       </div>
     </div>

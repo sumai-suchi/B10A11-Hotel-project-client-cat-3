@@ -8,13 +8,14 @@ import DatePicker from "react-datepicker";
 import Swal from "sweetalert2";
 
 
+
 const MyBookingCard = ({ room,setMydata}) => {
     console.log(room)
    
     const { user } = useContext(AuthContext)
     console.log(user?.displayName)
     
-    const { _id,RoomName, date, price, image } = room
+    const { _id,RoomName, date, price, image ,id} = room
     console.log(RoomName, date, price, image)
     const [review, setReview] = useState(Boolean)
 
@@ -78,15 +79,24 @@ const MyBookingCard = ({ room,setMydata}) => {
 
     }
 
-    const handleDelete=async(id)=>
+    const handleDelete=async(id,_id)=>
       {
-        console.log(id)
+        console.log(id,_id)
         try {
             console.log('hey')
              
             const res = await axios.delete(`http://localhost:5000/MyBookedRoom/RoomCancel/${id}`)
             // console.log(res.data)
             console.log(res)
+
+            const response=await axios.patch(`http://localhost:5000/RoomAvailable/${_id}`,
+                {
+                    availability:true 
+                }
+                
+            )
+            console.log(response)
+           
             Swal.fire({
                 title: "Are you sure?",
                 text: "You won't be able to revert this!",
@@ -104,7 +114,9 @@ const MyBookingCard = ({ room,setMydata}) => {
                   });
                 }
               });
-            setMydata((prevRooms)=>prevRooms.filter((room)=>room._id !=id));
+            
+              setMydata((prevRooms)=>prevRooms.filter((room)=>room._id !== id));
+          
            
 
         } catch (error) {
@@ -169,7 +181,7 @@ const MyBookingCard = ({ room,setMydata}) => {
 
                                 }>Update Date</button>
                                 <button className="btn btn-sm btn-success" onClick={() => setReview(true)}>Review</button>
-                                <button className="btn btn-sm btn-error " onClick={()=>handleDelete(_id)}>Cancel</button>
+                                <button className="btn btn-sm btn-error " onClick={()=>handleDelete(_id,id)}>Cancel</button>
                             </div>
                         </td>
                     </tr>

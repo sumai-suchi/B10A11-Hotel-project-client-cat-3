@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthContext";
-
+import gif2 from '../../src/assets/Animation - 1740229565683.gif'
 
 
 const Navbar = () => {
@@ -23,7 +23,10 @@ const Navbar = () => {
                     </li>
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-xl font-bold italic text-blue-900">MonaLisa</a>
+               <div className="flex justify-center items-center">
+               <img src={gif2} className="size-5 md:size-10" alt=""  />
+               <a className="btn btn-ghost text-xs   md:text-xl font-bold italic text-blue-900">MonaLisa</a>
+               </div>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1">

@@ -2,7 +2,7 @@ import { useContext} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthContext";
 import { toast, ToastContainer } from "react-toastify";
-
+import '../FileCSS/styles.css'
 
 
 
@@ -12,7 +12,7 @@ const Login = () => {
   
   const navigate=useNavigate()
 
-
+ 
 
   
 
@@ -76,8 +76,9 @@ const handleSubmit=(e)=>
   }
   
     return (
-        <div className="flex justify-center items-center min-h-screen bg-gray-100 p-4 sm:p-6 md:p-8">
-        <div className="card w-full max-w-sm bg-white shadow-xl p-6 sm:p-8 rounded-lg">
+        <div className="flex justify-center items-center min-h-screen bg-image  p-4 sm:p-6 md:p-8">
+          
+        <div className="card w-full max-w-sm bg-gray-200 shadow-xl p-6 sm:p-8 rounded-lg">
           <h2 className="text-2xl font-bold text-center mb-4">Login</h2>
           <ToastContainer></ToastContainer>
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -106,7 +107,7 @@ const handleSubmit=(e)=>
           <button type="submit" className="btn mt-2 w-2/6 mx-auto bg-sky-400 text-xs text-white "
           onClick={handleGoogleLogin}>Google Login</button>
           <p className="text-sm text-center mt-4">
-            Already have an account? <Link to="/login" className="text-blue-500">Register here</Link>
+            Already have an account? <Link to="/Register" className="text-blue-500">Register here</Link>
           </p>
           </div>
         </div>

@@ -30,3 +30,9 @@
     object-fit: cover;
   }
   
+  .bg-image{
+    background-image: url('../../../src/assets/snow-16130.gif');
+  }
+  .bg-image2{
+    background-image: url('../../../src/assets/rocket-3972.gif');
+  }
