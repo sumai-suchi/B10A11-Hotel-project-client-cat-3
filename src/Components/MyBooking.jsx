@@ -19,7 +19,7 @@ const MyBooking = () => {
 
 
     const    fetchMyData = async () => {
-      const { data } = await axios.get(`https://b10-a11-hotel-project-server-cat-3-37qtlt5uy.vercel.app/MyBookedRoom?email=${user?.email}`,{ withCredentials: true })
+      const { data } = await axios.get(`   http://localhost:5000/MyBookedRoom?email=${user?.email}`,{ withCredentials: true })
       console.log(data)
       setMydata(data)
     }

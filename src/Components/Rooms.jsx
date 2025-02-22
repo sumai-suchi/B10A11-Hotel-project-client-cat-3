@@ -17,7 +17,7 @@ const Rooms = () => {
        useEffect(()=>
         {
             const  fetchMyData = async () => {
-                const { data } = await axios.get(`https://b10-a11-hotel-project-server-cat-3-37qtlt5uy.vercel.app/RoomData?min=${min}&max=${max}`)
+                const { data } = await axios.get(`   http://localhost:5000/RoomData?min=${min}&max=${max}`)
                 console.log(data)
                  setMydata(data)
                   }
