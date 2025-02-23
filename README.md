@@ -1,7 +1,7 @@
 # Hotel management project: Monalisa
 
 client_deploy_link:https://hotel-project-client-cat-3.web.app
-client_site_gitHub_link:
+client_site_gitHub_link:https://github.com/sumai-suchi/B10A11-Hotel-project-client-cat-3
 
 # Description:
 This is a Hotel management project.Name of the project is Monalisa.It has many
