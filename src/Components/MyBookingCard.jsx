@@ -46,7 +46,7 @@ const MyBookingCard = ({ room,setMydata}) => {
         console.log(reviewData)
 
         try {
-            const res = await axios.post(`   http://localhost:5000/UserReview`, reviewData);
+            const res = await axios.post(`https://b10-a11-hotel-project-server-cat-3.vercel.app/UserReview`, reviewData);
             console.log(res.data)
             setReview(false)
             setRating("")
@@ -61,7 +61,7 @@ const MyBookingCard = ({ room,setMydata}) => {
 
         console.log(id ,'hello')
         try {
-            const res =await axios.patch(`   http://localhost:5000/MyBookedRoom/${id}`,
+            const res =await axios.patch(`https://b10-a11-hotel-project-server-cat-3.vercel.app/MyBookedRoom/${id}`,
 
              {
                 date: dateComment
@@ -85,11 +85,11 @@ const MyBookingCard = ({ room,setMydata}) => {
         try {
             console.log('hey')
              
-            const res = await axios.delete(`   http://localhost:5000/MyBookedRoom/RoomCancel/${id}`)
+            const res = await axios.delete(`https://b10-a11-hotel-project-server-cat-3.vercel.app/MyBookedRoom/RoomCancel/${id}`)
             // console.log(res.data)
             console.log(res)
 
-            const response=await axios.patch(`   http://localhost:5000/RoomAvailable/${_id}`,
+            const response=await axios.patch(`https://b10-a11-hotel-project-server-cat-3.vercel.app/RoomAvailable/${_id}`,
                 {
                     availability:true 
                 }

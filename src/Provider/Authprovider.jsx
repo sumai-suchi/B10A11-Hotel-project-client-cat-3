@@ -49,7 +49,7 @@ const AuthProvider = ({children}) => {
            
             if(currentUser?.email)
             {
-           const {data}= await axios.post(`http://localhost:5000/jwt`,{
+           const {data}= await axios.post(`https://b10-a11-hotel-project-server-cat-3.vercel.app/jwt`,{
             email:currentUser?.email
          },{withCredentials:true})
          console.log(data)
@@ -59,7 +59,7 @@ const AuthProvider = ({children}) => {
             {
              
                 setUsers(currentUser)
-                const {data}= await axios.get(`http://localhost:5000/logOut`,{withCredentials:true})
+                const {data}= await axios.get(`   https://b10-a11-hotel-project-server-cat-3.vercel.app/logOut`,{withCredentials:true})
                 console.log(currentUser)
                 console.log(data)
             }
